@@ -1,0 +1,26 @@
+{
+  "name": "js-colors",
+  "version": "0.0.1",
+  "homepage": "https://github.com/BIGjuevos/js-colors",
+  "authors": [
+    "BIGjuevos <ryan.null@gmail.com>"
+  ],
+  "description": "JavaScript color manipulation library. It provides several \"classes\" that allow you to manipulate colors on the fly in the browser.",
+  "main": "colors.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "javascript",
+    "colors",
+    "manipulation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
