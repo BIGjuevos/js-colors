@@ -9,11 +9,11 @@
    *
    * @returns {void}
    */
-  var ColorInternal = function(color) {
-    this.red = null;
-    this.green = null;
-    this.blue = null;
-    this.alpha = null;
+  var Color = function(color) {
+     var red = null,
+         green = null,
+         blue = null,
+         alpha = null;
 
     /**
      * Gets the RGB(A) representation of this color
@@ -133,18 +133,14 @@
     };
   };
 
-  var ColorsInternal = function() {
+  var Colors = function() {
     // Assign our internal color class
-    this.Color = ColorInternal;
+    this.Color = Color;
 
     return this;
   };
 
-  var Colors = function() {
-    return new ColorsInternal();
-  };
-
   if ( !window.Colors ) {
-    window.Colors = Colors;
+    window.Colors = new Colors();
   }
 })();
