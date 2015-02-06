@@ -7,14 +7,16 @@ Since it's in bower, it is really simple.
     bower install js-colors
 
 # development
-I love to have people help me write software.  Feel free to submit a pull request as long as the following is true:
+I love to have people help me write software.  Please submit a pull request as long as the following is true:
 
 1. Code coverage is still at 100%
 2. You have at least one test for each bit of your added functionality
 3. You update the documentation accordingly
 4. It still passes eslint
 
-To work on the code simply:
+If you can't meet (or don't know how) to satisfty the above conditions, don't worry, it's collaborative, we can do it together!
+
+## contributing
 
 1. Install all of the dependencies (luckily npm makes this really easy)
 
@@ -26,7 +28,8 @@ To work on the code simply:
 4. Make sure eslint passes
 
         eslint
-5. YAY! Thanks for contributing!
+5. Do fancy Git magic here
+6. YAY! Thanks for contributing!
 
 # license
 It's MIT License.  Do whatever you want really.  Though I do love to know who is using it so feel free to drop me a line!
