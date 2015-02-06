@@ -24,9 +24,9 @@
         if ( color.length == 7 ) {
           color = color.substr(1);
         }
-        red = parseInt(color.substr(0,2), 16).toString(10);
-        green = parseInt(color.substr(2,2), 16).toString(10);
-        blue = parseInt(color.substr(4,2), 16).toString(10);
+        red = parseInt(color.substr(0,2), 16);
+        green = parseInt(color.substr(2,2), 16);
+        blue = parseInt(color.substr(4,2), 16);
         alpha = 1;
 
         // successful parsing, continue
