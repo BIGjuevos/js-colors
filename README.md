@@ -8,19 +8,24 @@ Since it's in bower, it is really simple.
 
 # development
 I love to have people help me write software.  Feel free to submit a pull request as long as the following is true:
+
 1. Code coverage is still at 100%
 2. You have at least one test for each bit of your added functionality
 3. You update the documentation accordingly
 4. It still passes eslint
 
 To work on the code simply:
+
 1. Install all of the dependencies (luckily npm makes this really easy)
-       npm install
+
+        npm install
 2. Edit what you need to in colors.js
 3. Make sure tests pass
-       karma start
+
+        karma start
 4. Make sure eslint passes
-       eslint
+
+        eslint
 5. YAY! Thanks for contributing!
 
 # license
