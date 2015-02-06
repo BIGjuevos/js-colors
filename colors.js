@@ -7,20 +7,44 @@
    *
    * @param {string} color - A representation of a color as RGB(A),HSL(A),Hexadecimal(with/without hash)
    *
-   * @returns {void}
+   * @returns {void|false} Returns false on parsing error
    */
   var Color = function(color) {
     var red = null,
          green = null,
          blue = null,
-         alpha = null;
+         alpha = null,
+         valid = false;
 
     /**
      * Parse out what we've been given coming in
      */
     var parseColor = function(color) {
+      if ( color.match(/^#?[0-9a-f]{6}$/i) ) {
+        if ( color.length == 7 ) {
+          color = color.substr(1);
+        }
+        red = parseInt(color.substr(0,2), 16).toString(10);
+        green = parseInt(color.substr(2,2), 16).toString(10);
+        blue = parseInt(color.substr(4,2), 16).toString(10);
+        alpha = 1;
+
+        // successful parsing, continue
+        valid = true;
+        return true;
+      } else {
+        valid = false;
+        return false;
+      }
     };
-    parseColor(color);
+
+    if ( !parseColor(color) ) {
+      valid = false;
+    }
+
+    this.isValid = function() {
+      return valid;
+    };
 
     /**
      * Gets the RGB(A) representation of this color
@@ -30,10 +54,23 @@
      * @returns {string} the RGB(A) representation of this color
      */
     this.getRGB = function(withAlpha) {
+      if ( withAlpha === true ) {
+        return "rgba(" + red + "," + green + "," + blue + "," + alpha.toFixed(2) + ")";
+      } else {
+        return "rgb(" + red + "," + green + "," + blue + ")";
+      }
     };
 
     this.getRed = function() {
       return red;
+    };
+
+    this.getGreen = function() {
+      return green;
+    };
+
+    this.getBlue = function() {
+      return blue;
     };
 
     /**
