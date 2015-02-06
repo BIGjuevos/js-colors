@@ -10,10 +10,17 @@
    * @returns {void}
    */
   var Color = function(color) {
-     var red = null,
+    var red = null,
          green = null,
          blue = null,
          alpha = null;
+
+    /**
+     * Parse out what we've been given coming in
+     */
+    var parseColor = function(color) {
+    };
+    parseColor(color);
 
     /**
      * Gets the RGB(A) representation of this color
@@ -23,6 +30,10 @@
      * @returns {string} the RGB(A) representation of this color
      */
     this.getRGB = function(withAlpha) {
+    };
+
+    this.getRed = function() {
+      return red;
     };
 
     /**
