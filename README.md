@@ -14,13 +14,14 @@ I love to have people help me write software.  Feel free to submit a pull reques
 4. It still passes eslint
 
 To work on the code simply:
-1. Install all of the dependencies (luckily npm makes this easy)
-    npm install
+1. Install all of the dependencies (luckily npm makes this really easy)
+       npm install
 2. Edit what you need to in colors.js
 3. Make sure tests pass
-    karma start
+       karma start
 4. Make sure eslint passes
-5. YAY!
+       eslint
+5. YAY! Thanks for contributing!
 
 # license
 It's MIT License.  Do whatever you want really.  Though I do love to know who is using it so feel free to drop me a line!
