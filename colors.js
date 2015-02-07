@@ -20,6 +20,8 @@
      * Parse out what we've been given coming in
      */
     var parseColor = function(color) {
+      var matches = [];
+
       if ( color.match(/^#?[0-9a-f]{6}$/i) ) {
         if ( color.length == 7 ) {
           color = color.substr(1);
@@ -30,6 +32,22 @@
         alpha = 1;
 
         // successful parsing, continue
+        valid = true;
+        return true;
+      } else if ( matches = color.match(/rgba\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3}),([0-9\.]+)\)/i) ) {
+        red = matches[1];
+        green = matches[2];
+        blue = matches[3];
+        alpha = matches[4];
+
+        valid = true;
+        return true;
+      } else if ( matches = color.match(/rgb\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3})\)/i) ) {
+        red = matches[1];
+        green = matches[2];
+        blue = matches[3];
+        alpha = 1;
+
         valid = true;
         return true;
       } else {
@@ -71,6 +89,10 @@
 
     this.getBlue = function() {
       return blue;
+    };
+
+    this.getAlpha = function() {
+      return alpha;
     };
 
     /**

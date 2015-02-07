@@ -51,5 +51,25 @@ describe('Color', function() {
       assert.equal(color.isValid(), true);
       assert.equal(color.getRGB(true), 'rgba(18,52,15,1.00)');
     });
+
+    it('should accept a valid rgba', function() {
+      var color = new Colors.Color('rgba(1,2,64,0.9)');
+
+      assert.equal(color.isValid(), true);
+      assert.equal(color.getRed(), 1);
+      assert.equal(color.getGreen(), 2);
+      assert.equal(color.getBlue(), 64);
+      assert.equal(color.getAlpha(), 0.9);
+    });
+
+    it('should accept a valid rgb', function() {
+      var color = new Colors.Color('rgb(5,2,64)');
+
+      assert.equal(color.isValid(), true);
+      assert.equal(color.getRed(), 5);
+      assert.equal(color.getGreen(), 2);
+      assert.equal(color.getBlue(), 64);
+      assert.equal(color.getAlpha(), 1);
+    });
   });
 });
