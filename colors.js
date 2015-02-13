@@ -14,7 +14,8 @@
          green = null,
          blue = null,
          alpha = null,
-         valid = false;
+         valid = false,
+         convert = null;
 
     /**
      * Has the color been validated yet?
@@ -187,7 +188,8 @@
      * Parse out what we've been given coming in
      */
     var parseColor = function(color) {
-      var matches = [];
+      var matches = [],
+          hsl;
 
       if ( color.match(/^#?[0-9a-f]{6}$/i) ) {
         if ( color.length == 7 ) {
@@ -201,7 +203,7 @@
         // successful parsing, continue
         valid = true;
         return true;
-      } else if ( matches = color.match(/rgba\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3}),([0-9\.]+)\)/i) ) {
+      } else if ( matches = color.match(/rgba\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*([0-9\.]+)\)/i) ) {
         red = matches[1];
         green = matches[2];
         blue = matches[3];
@@ -209,7 +211,7 @@
 
         valid = true;
         return true;
-      } else if ( matches = color.match(/rgb\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3})\)/i) ) {
+      } else if ( matches = color.match(/rgb\((\d{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\)/i) ) {
         red = matches[1];
         green = matches[2];
         blue = matches[3];
@@ -217,12 +219,20 @@
 
         valid = true;
         return true;
-      } else if ( matches = color.match(/hsl\(([0-9]{1,3}),([0-9]{1,3})%,([0-9]{1,3})%\)/i) ) {
+      } else if ( matches = color.match(/hsl\((\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\)/i) ) {
         alpha = 1;
+        convert = new Convert();
+        console.log(matches);
+        hsl = convert.hslToRgb(parseInt(matches[1]), matches[2] / 100, matches[3] / 100);
+        console.log(hsl);
+
+        red = hsl[0];
+        green = hsl[1];
+        blue = hsl[2];
 
         valid = true;
         return true;
-      } else if ( matches = color.match(/hsla\(([0-9]{1,3}),([0-9]{1,3})%,([0-9]{1,3})%,([0-9\.]+)\)/i) ) {
+      } else if ( matches = color.match(/hsla\((\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*([0-9\.]+)\)/i) ) {
         alpha = matches[4];
 
         valid = true;
@@ -240,35 +250,14 @@
 
   var Convert = function() {
     this.hslToRgb = function(h, s, l) {
-      var r, g, b;
 
-      if (s == 0) {
-        r = g = b = l; // achromatic
-      } else {
-        var hue2rgb = function hue2rgb(p, q, t){
-          if(t < 0) t += 1;
-          if(t > 1) t -= 1;
-          if(t < 1/6) return p + (q - p) * 6 * t;
-          if(t < 1/2) return q;
-          if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-          return p;
-        }
-
-        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-        var p = 2 * l - q;
-        r = hue2rgb(p, q, h + 1/3);
-        g = hue2rgb(p, q, h);
-        b = hue2rgb(p, q, h - 1/3);
-      }
-
-      return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     };
   };
 
   var Colors = function() {
     // Assign our internal color class
     this.Color = Color;
-    this.Convert = Convert;
+    this.Convert = new Convert();
 
     return this;
   };
