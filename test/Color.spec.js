@@ -100,5 +100,13 @@ describe('Color', function() {
       assert.equal(color.getHSL(true), "hsla(120,50%,50%,1)");
     });
 
+    it('should output hex properly', function() {
+      var color = new Colors.Color('#3FBF3F');
+
+      assert.equal(color.isValid(), true);
+      assert.equal(color.getHex(), "3FBF3F");
+      assert.equal(color.getHex(true), "#3FBF3F");
+    });
+
   });
 });

@@ -116,6 +116,19 @@
      * @returns {string} the Hexadecimal representation of this color
      */
     this.getHex = function(withHash) {
+      var str;
+
+      if ( withHash ) {
+        str = "#";
+      } else {
+        str = "";
+      }
+
+      str += this.getRed().toString(16).toUpperCase();
+      str += this.getGreen().toString(16).toUpperCase();
+      str += this.getBlue().toString(16).toUpperCase();
+
+      return str;
     };
 
     /**
