@@ -81,5 +81,15 @@ describe('Color', function() {
       assert.equal(color.getBlue(), 64);
       assert.equal(color.getAlpha(), 1);
     });
+
+    it('should accept a valid hsla', function() {
+      var color = new Colors.Color('hsla(120,50%,50%,0.56)');
+
+      assert.equal(color.isValid(), true);
+      assert.equal(color.getRed(), 64);
+      assert.equal(color.getGreen(), 191);
+      assert.equal(color.getBlue(), 64);
+      assert.equal(color.getAlpha(), 0.56);
+    });
   });
 });

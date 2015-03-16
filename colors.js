@@ -222,16 +222,21 @@
       } else if ( matches = color.match(/hsl\((\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\)/i) ) {
         alpha = 1;
         convert = new Convert();
-        console.log(matches);
         hsl = convert.hslToRgb(parseInt(matches[1]) / 360, matches[2] / 100, matches[3] / 100);
 
-        red = hsl.getRed();
-        green = hsl.getGreen();
-        blue = hsl.getBlue();
+        red = hsl[0];
+        green = hsl[1];
+        blue = hsl[2];
 
         valid = true;
         return true;
       } else if ( matches = color.match(/hsla\((\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*([0-9\.]+)\)/i) ) {
+        convert = new Convert();
+        hsl = convert.hslToRgb(parseInt(matches[1]) / 360, matches[2] / 100, matches[3] / 100);
+
+        red = hsl[0];
+        green = hsl[1];
+        blue = hsl[2];
         alpha = matches[4];
 
         valid = true;
@@ -271,7 +276,7 @@
         g = hueToRgb(p, q, h);
         b = hueToRgb(p, q, h - 1 / 3);
 
-        return new Color(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
       }
 
       function hueToRgb(p, q, t) {
