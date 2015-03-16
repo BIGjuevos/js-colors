@@ -31,12 +31,13 @@ If you can't meet (or don't know how) to satisfty the above conditions, don't wo
 3. Make sure tests pass
 
         karma start
-4. Make sure eslint passes
+4. Inspect code coverage report at: js-colors/coverage/<phantom-version-here>/index.html and make sure it is still at 100% across the board.
+5. Make sure eslint passes
 
-        eslint
-5. Submit your pull request
-6. Discussion
-7. YAY! Thanks for contributing!
+        eslint colors.js
+6. Submit your pull request
+7. Discussion
+8. YAY! Thanks for contributing!
 
 # license
 It's MIT License.  Do whatever you want really.  Though I do love to know who is using it so feel free to drop me a line!
