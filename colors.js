@@ -97,7 +97,7 @@
 
       hsl = convert.rgbToHsl(this.getRed(), this.getGreen(), this.getBlue());
 
-      str += hsl[0] * 360 + ",";
+      str += Math.round(hsl[0] * 360) + ",";
       str += Math.round( hsl[1] * 100 ) + "%,";
       str += Math.round( hsl[2] * 100 ) + "%";
       if ( withAlpha ) {
@@ -137,6 +137,20 @@
      * @returns {Colors.Color} the complement of this color
      */
     this.getComplement = function() {
+      var hsl, rgb,
+          color,
+          convert;
+
+      convert = new Convert();
+
+      hsl = convert.rgbToHsl(this.getRed(), this.getGreen(), this.getBlue());
+
+      hsl[0] = hsl[0] * 360;
+      hsl[0] += 180;
+
+      rgb = convert.hslToRgb(hsl[0] / 360, hsl[1], hsl[2]);
+
+      return new Color(rgb[0], rgb[1], rgb[2]);
     };
 
     /**
@@ -298,10 +312,12 @@
 
   var Convert = function() {
     this.hslToRgb = function(h, s, l) {
-      var r, g, b;
+      var r, g, b,
+          ret;
 
-      if ( s === 0.0 ) {
-        return new Color('#000000');
+      if ( s == 0 ) {
+        ret = [l,l,l];
+        return [Math.round(l * 255),Math.round(l * 255),Math.round(l * 255)];
       } else {
         var q = l < 0.5 ? l * ( 1.0 + s ) : l + s - l * s;
         var p = 2.0 * l - q;
@@ -310,11 +326,14 @@
         g = hueToRgb(p, q, h);
         b = hueToRgb(p, q, h - 1 / 3);
 
-        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+        ret = [r,g,b];
       }
+
+      return [Math.round(ret[0] * 255), Math.round(ret[1] * 255), Math.round(ret[2] * 255)];
 
       function hueToRgb(p, q, t) {
         if ( t < 0 ) t += 1;
+        /* istanbul ignore if */
         if ( t > 1 ) t -= 1;
 
         if ( t < 1 / 6 ) return p + (q - p) * 6 * t;
@@ -371,6 +390,7 @@
     return this;
   };
 
+  /* istanbul ignore else */
   if ( !window.Colors ) {
     window.Colors = new Colors();
   }
