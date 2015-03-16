@@ -1,5 +1,7 @@
 <div style="text-align:center">
+
 ![js-colors logo](http://bigjuevos.github.io/js-colors/images/logo.png)
+
 </div>
 
 # js-colors
