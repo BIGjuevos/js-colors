@@ -3,6 +3,8 @@ JavaScript color manipulation library.  It is a library that is designed and bui
 
 This page is dedicated to everything development related.  For documentation, please visit the [js-colors website](http://bigjuevos.github.io/js-colors/)!
 
+![js-colors logo](http://bigjuevos.github.io/js-colors/images/logo.png)
+
 # installing
 Since it's in bower, it is really simple.
 
