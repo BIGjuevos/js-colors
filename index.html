@@ -4,20 +4,32 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="post-title">Welcome to js-colors!</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  <p>Thanks for your interest in js-colors.  It is a library that is designed and built to do everything you could ever want to do with a color in your browser.</p>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+  <p>I recommend that you checkout out the <a href="{{site.baseurl}}/quick-start">guick start guide</a> to get moving now.  Or, if you are more inclined you can also check out the <a href="{{site.baseurl}}/documentation">documentation</a>.</p>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p>If you have questions or issues with the library, you can <a href="https://github.com/BIGjuevos/js-colors/issues">check out the issues on github</a>, or drop me a message from my details in the footer.</p>
+
+  <p>Interested in contributing? Check out our <a href="https://github.com/BIGjuevos/js-colors">GitHub page</a> for more information.</p>
+
+  <h2>Capabilities</h2>
+  <p>
+    js-colors does lots of stuff for you, and makes it easy to do.  It supports the following things (with colors):
+    <ul>
+      <li>Conversion (rgbs, hsla, hex)</li>
+      <li>Determine complement color</li>
+      <li>Get greyscale of colors</li>
+      <li>Mix colors with each other</li>
+      <li>Lighten/darken colors</li>
+      <li>Determine if a color is light/dark</li>
+      <li>Let you know if it is a warm or cold color</li>
+      <li>Generate random colors</li>
+    </ul>
+  </p>
+
+  <h2>Quick Demo</h2>
+  <p>If you only have a few minutes, tinker with the below things!</p>
 
 </div>

@@ -1,12 +1,10 @@
 # Site settings
-title: "js-colors: js color manipulation"
+title: "js-colors"
 email: "ryan.null@gmail.com"
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Color manipulation written in javascript that allows you to update and mess with colors on the fly.  It can also do conversion, calculation, mixing, and much more!
 baseurl: "/js-colors" # the subpath of your site, e.g. /blog/
-url: "http://bigjuevos.github.io/" # the base hostname & protocol for your site
+url: "http://bigjuevos.github.io" # the base hostname & protocol for your site
 twitter_username: BIGjuevos
 github_username:  BIGjuevos
 
