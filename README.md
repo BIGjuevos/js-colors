@@ -1,6 +1,4 @@
-<div style="text-align:center">
-  <img src="http://bigjuevos.github.io/js-colors/images/logo.png" alt="js-colors logo" />
-</div>
+<img src="http://bigjuevos.github.io/js-colors/images/logo.png" alt="js-colors logo" />
 
 # js-colors
 JavaScript color manipulation library.  It is a library that is designed and built to do everything you could ever want to do with a color in your browser.
