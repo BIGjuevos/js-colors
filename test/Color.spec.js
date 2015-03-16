@@ -91,5 +91,14 @@ describe('Color', function() {
       assert.equal(color.getBlue(), 64);
       assert.equal(color.getAlpha(), 0.56);
     });
+
+    it('should output hsl properly', function() {
+      var color = new Colors.Color('#3FBF3F');
+
+      assert.equal(color.isValid(), true);
+      assert.equal(color.getHSL(), "hsl(120,50%,50%)");
+      assert.equal(color.getHSL(true), "hsla(120,50%,50%,1)");
+    });
+
   });
 });

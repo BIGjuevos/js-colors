@@ -85,6 +85,27 @@
      * @returns {string} the HSL(A) representation of this color
      */
     this.getHSL = function(withAlpha) {
+      var str,
+          convert = new Convert(),
+          hsl;
+
+      if ( withAlpha ) {
+        str = "hsla(";
+      } else {
+        str = "hsl(";
+      }
+
+      hsl = convert.rgbToHsl(this.getRed(), this.getGreen(), this.getBlue());
+
+      str += hsl[0] * 360 + ",";
+      str += Math.round( hsl[1] * 100 ) + "%,";
+      str += Math.round( hsl[2] * 100 ) + "%";
+      if ( withAlpha ) {
+        str += "," + alpha;
+      }
+      str += ")";
+
+      return str;
     };
 
     /**
@@ -289,6 +310,43 @@
 
         return p;
       }
+    };
+
+    this.rgbToHsl = function(r, g, b) {
+      var h, s, l,
+          r, g, b,
+          min, max,
+          d;
+
+      r = r / 255;
+      g = g / 255;
+      b = b / 255;
+
+      max = ( r > g && r > b ) ? r : ( g > b ) ? g : b;
+      min = ( r < g && r < b ) ? r : ( g < b ) ? g : b;
+
+      h = s = l = (min + max) / 2;
+
+      //achromatic
+      if ( max == min ) {
+        h = s = 0;
+      } else {
+        d = max - min;
+
+        s = ( l > 0.5) ? d / ( 2 - max - min) : d / ( max + min );
+
+        if ( r > g && r > b ) {
+          h = ( g - b ) / d + ( g < b ? 6 : 0 );
+        } else if ( g > b ) {
+          h = ( b - r ) / d + 2;
+        } else {
+          h = ( r - g ) / d + 4;
+        }
+
+        h = h / 6;
+      }
+
+      return [h,s,l];
     };
   };
 
