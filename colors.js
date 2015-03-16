@@ -110,7 +110,7 @@
      *
      * @returns {Colors.Color} the greyscale color of this one
      */
-    this.getGreyscal = function() {
+    this.getGreyscale = function() {
     };
 
     /**
@@ -223,12 +223,11 @@
         alpha = 1;
         convert = new Convert();
         console.log(matches);
-        hsl = convert.hslToRgb(parseInt(matches[1]), matches[2] / 100, matches[3] / 100);
-        console.log(hsl);
+        hsl = convert.hslToRgb(parseInt(matches[1]) / 360, matches[2] / 100, matches[3] / 100);
 
-        red = hsl[0];
-        green = hsl[1];
-        blue = hsl[2];
+        red = hsl.getRed();
+        green = hsl.getGreen();
+        blue = hsl.getBlue();
 
         valid = true;
         return true;
@@ -243,14 +242,48 @@
       }
     };
 
-    if ( !parseColor(color) ) {
+
+    if ( arguments.length == 3 ) {
+      //special case for being handed rgb directly
+
+      red = arguments[0];
+      green = arguments[1];
+      blue = arguments[2];
+      alpha = 1;
+
+      valid = true;
+    } else if ( !parseColor(color) ) {
       valid = false;
     }
   };
 
   var Convert = function() {
     this.hslToRgb = function(h, s, l) {
+      var r, g, b;
 
+      if ( s === 0.0 ) {
+        return new Color('#000000');
+      } else {
+        var q = l < 0.5 ? l * ( 1.0 + s ) : l + s - l * s;
+        var p = 2.0 * l - q;
+
+        r = hueToRgb(p, q, h + 1 / 3);
+        g = hueToRgb(p, q, h);
+        b = hueToRgb(p, q, h - 1 / 3);
+
+        return new Color(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
+      }
+
+      function hueToRgb(p, q, t) {
+        if ( t < 0 ) t += 1;
+        if ( t > 1 ) t -= 1;
+
+        if ( t < 1 / 6 ) return p + (q - p) * 6 * t;
+        if ( t < 1 / 2 ) return q;
+        if ( t < 2 / 3 ) return p + (q - p) * ( 2 / 3 - t ) * 6;
+
+        return p;
+      }
     };
   };
 
