@@ -390,8 +390,11 @@
     return this;
   };
 
+  /**
+   * only drop it indow global window scope if a window exists
+   */
   /* istanbul ignore else */
-  if ( !window.Colors ) {
+  if ( window && !window.Colors ) {
     window.Colors = new Colors();
   }
 })();
