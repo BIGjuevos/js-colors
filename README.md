@@ -1,9 +1,11 @@
+<div style="text-align:center">
+![js-colors logo](http://bigjuevos.github.io/js-colors/images/logo.png)
+</div>
+
 # js-colors
 JavaScript color manipulation library.  It is a library that is designed and built to do everything you could ever want to do with a color in your browser.
 
 This page is dedicated to everything development related.  For documentation, please visit the [js-colors website](http://bigjuevos.github.io/js-colors/)!
-
-![js-colors logo](http://bigjuevos.github.io/js-colors/images/logo.png)
 
 # installing
 Since it's in bower, it is really simple.
